@@ -6,20 +6,20 @@
     >
       <img
         class="banner-img"
-        src="https://img1.qunarzz.com/vs_ceph_vs_tts/046e826a-0ae6-4f40-8c2d-3747bdbfef2f.jpg_r_640x420x90_fd0f94d0.jpg"
+        :src="bannerImg"
       />
       <div class="banner-info">
         <div class="banner-tittle">
-          杭州出发-跟团游
+          {{sightName}}
         </div>
         <div class="banner-number">
           <span class="iconfont banner-icon">&#xe632;</span>
-          39
+          {{bannerImgs.length}}
         </div>
       </div>
     </div>
     <common-gallary
-      :imgs="imgs"
+      :imgs="bannerImgs"
       v-show="showGallary"
       @close="handleGallaryClose"
     ></common-gallary>
@@ -32,6 +32,11 @@ import CommonGallary from '@/components/Gallary'
 
 export default {
   name: 'DetailBanner',
+  props: {
+    sightName: String,
+    bannerImg: String,
+    bannerImgs: Array
+  },
   components: {
     CommonGallary
   },
@@ -45,9 +50,6 @@ export default {
   },
   data() {
     return {
-      imgs: [
-        'https://img1.qunarzz.com/vs_ceph_vs_tts/046e826a-0ae6-4f40-8c2d-3747bdbfef2f.jpg_r_640x420x90_fd0f94d0.jpg'
-      ],
       showGallary: false
     }
   }
