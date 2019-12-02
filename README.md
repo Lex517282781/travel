@@ -33,6 +33,19 @@ fastclick 解决移动端 300 毫秒的延时问题
       使用外部组件 `vue-awesome-swiper`
       涉及组件内部样式更改
       因为使用组件作用域的问题 需要使用样式穿透不限作用域方式修改样式 如 `.wrapper >>> .swiper-pagination-bullet-active`
+    - list
+
+  - city-page
+
+    - header
+    - search
+    - list
+    - alphabet
+
+  - detail-page
+
+    - banner
+      扩展了图片画廊组件 `Gallary`
 
 ## 问题
 
