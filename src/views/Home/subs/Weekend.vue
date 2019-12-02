@@ -10,7 +10,7 @@
         <div class="item-img-wrapper">
           <img
             class="item-img"
-            :src="item.url"
+            :src="item.imgUrl"
           />
         </div>
         <div class="item-info">
@@ -25,35 +25,11 @@
 <script>
 export default {
   name: 'HomeWeekend',
+  props: {
+    list: Array
+  },
   data() {
-    return {
-      list: [
-        {
-          id: 1,
-          url:
-            'https://imgs.qunarzz.com/vs_ceph_vs_tts/b37e3d7b-7be3-48b5-976d-6ce001f20638.jpg_r_240x160x90_e0a60eff.jpg',
-          title:
-            '哈尔滨6天5晚跟团游@亚布力激情滑雪+甄选高端酒店+雪乡篝火晚会|24H接送',
-          desc: '独特线路满分搭配，高素质导游领队出行无忧'
-        },
-        {
-          id: 2,
-          url:
-            'https://imgs.qunarzz.com/vs_ceph_vs_tts/b37e3d7b-7be3-48b5-976d-6ce001f20638.jpg_r_240x160x90_e0a60eff.jpg',
-          title:
-            '哈尔滨6天5晚跟团游@亚布力激情滑雪+甄选高端酒店+雪乡篝火晚会|24H接送',
-          desc: '独特线路满分搭配，高素质导游领队出行无忧'
-        },
-        {
-          id: 3,
-          url:
-            'https://imgs.qunarzz.com/vs_ceph_vs_tts/b37e3d7b-7be3-48b5-976d-6ce001f20638.jpg_r_240x160x90_e0a60eff.jpg',
-          title:
-            '哈尔滨6天5晚跟团游@亚布力激情滑雪+甄选高端酒店+雪乡篝火晚会|24H接送',
-          desc: '独特线路满分搭配，高素质导游领队出行无忧'
-        }
-      ]
-    }
+    return {}
   }
 }
 </script>

@@ -13,7 +13,7 @@
           <div class='icon-img'>
             <img
               class='icon-img-content'
-              :src='item.url'
+              :src='item.imgUrl'
             />
           </div>
           <p class="icon-desc">{{item.desc}}</p>
@@ -26,79 +26,21 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data() {
     return {
       swiperOption: {
         autoplay: false
-      },
-      list: [
-        {
-          id: '1',
-          url: 'https://s.qunarzz.com/homenode/images/touchheader/innBnb.png',
-          desc: '民宿'
-        },
-        {
-          id: '2',
-          url:
-            'https://s.qunarzz.com/homenode/images/touchheader/bargainflight.png',
-          desc: '机票'
-        },
-        {
-          id: '3',
-          url: 'https://s.qunarzz.com/homenode/images/touchheader/group.png',
-          desc: '特惠酒店'
-        },
-        {
-          id: '4',
-          url: 'https://s.qunarzz.com/homenode/images/touchheader/haiwai.png',
-          desc: '海外酒店'
-        },
-        {
-          id: '5',
-          url:
-            'https://picbed.qunarzz.com/7804b43ac02cd0333bd0f866eebd43b3.png',
-          desc: '一日游'
-        },
-        {
-          id: '6',
-          url: 'https://s.qunarzz.com/homenode/images/touchheader/bus.png',
-          desc: '汽车票'
-        },
-        {
-          id: '7',
-          url: 'https://s.qunarzz.com/homenode/images/touchheader/tuan.png',
-          desc: '团购'
-        },
-        {
-          id: '8',
-          url:
-            'https://s.qunarzz.com/homenode/images/touchheader/freeTravel.png',
-          desc: '自由行'
-        },
-        {
-          id: '9',
-          url: 'https://s.qunarzz.com/homenode/images/touchheader/car.png',
-          desc: '自驾'
-        },
-        {
-          id: '10',
-          url:
-            'https://s.qunarzz.com/homenode/images/touchheader/aroundtravel.png',
-          desc: '周边短途'
-        },
-        {
-          id: '11',
-          url: 'https://picbed.qunarzz.com/b8bc00a84142f52d21824d5ebeba29a3.png',
-          desc: '信用卡'
-        }
-      ]
+      }
     }
   },
   computed: {
     pages() {
       const pages = []
       this.list.forEach((item, index) => {
-        const page = Math.floor(index / 10)
+        const page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
         }
@@ -122,9 +64,9 @@ export default {
     position relative
     overflow hidden
     float left
-    width 20%
+    width 25%
     height 0
-    padding-bottom 20%
+    padding-bottom 25%
     .icon-img
       position absolute
       top 0

@@ -9,7 +9,7 @@
       >
         <img
           class="item-img"
-          :src="item.url"
+          :src="item.imgUrl"
         />
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -24,35 +24,11 @@
 <script>
 export default {
   name: 'HomeRecommend',
+  props: {
+    list: Array
+  },
   data() {
-    return {
-      list: [
-        {
-          id: 1,
-          url:
-            'https://img1.qunarzz.com/vs_ceph_vs_tts/82b6a278-a9a8-495c-a56d-c9545d5cb526.jpg_r_240x160x90_170d6c45.jpg',
-          title:
-            '哈尔滨6天5晚跟团游@亚布力激情滑雪+甄选高端酒店+雪乡篝火晚会|24H接送',
-          desc: '独特线路满分搭配，高素质导游领队出行无忧'
-        },
-        {
-          id: 2,
-          url:
-            'https://img1.qunarzz.com/vs_ceph_vs_tts/82b6a278-a9a8-495c-a56d-c9545d5cb526.jpg_r_240x160x90_170d6c45.jpg',
-          title:
-            '哈尔滨6天5晚跟团游@亚布力激情滑雪+甄选高端酒店+雪乡篝火晚会|24H接送',
-          desc: '独特线路满分搭配，高素质导游领队出行无忧'
-        },
-        {
-          id: 3,
-          url:
-            'https://img1.qunarzz.com/vs_ceph_vs_tts/82b6a278-a9a8-495c-a56d-c9545d5cb526.jpg_r_240x160x90_170d6c45.jpg',
-          title:
-            '哈尔滨6天5晚跟团游@亚布力激情滑雪+甄选高端酒店+雪乡篝火晚会|24H接送',
-          desc: '独特线路满分搭配，高素质导游领队出行无忧'
-        }
-      ]
-    }
+    return {}
   }
 }
 </script>
