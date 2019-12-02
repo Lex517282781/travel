@@ -41,6 +41,7 @@ fastclick 解决移动端 300 毫秒的延时问题
     - search
     - list
     - alphabet
+      滚动的时候需要阻止默认事件 否则容易和页面的滚动事件影响
 
   - detail-page
 
