@@ -54,6 +54,7 @@ fastclick 解决移动端 300 毫秒的延时问题
     - 详情的获取 因为 keeplive 的作用 mounted 第二次进去就不会调用 所以需要在 keeplive 把 Detail 即不需要缓存的组件排除在外
     - 扩展知识: 组件中 name 的作用 1 递归组件时候需要声明 name 值 2 在 keeplive 排除不需要缓存的组件时候需要用到 name 的值 3 在开发工具调试的时候 显示各组件的名字
     - 页面跳转的时候会受上一个页面滚动的影响 可以在 routers 上加上 scrollBehavior 配置
+    - 组件动画的使用
 
 ## 问题
 
