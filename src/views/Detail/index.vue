@@ -5,7 +5,7 @@
       :bannerImg="bannerImg"
       :bannerImgs="gallaryImgs"
     ></detail-banner>
-    <detail-header></detail-header>
+    <detail-header v-if="headerShow"></detail-header>
     <div class="content">
       <detail-list :list="list"></detail-list>
     </div>
@@ -28,10 +28,17 @@ export default {
   },
   data() {
     return {
+      headerShow: true,
       sightName: '',
       bannerImg: '',
       gallaryImgs: [],
       list: []
+    }
+  },
+  created() {
+    const { isClient } = this.$store.state
+    if (isClient) {
+      this.headerShow = false
     }
   },
   methods: {

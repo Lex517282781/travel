@@ -57,6 +57,50 @@ fastclick 解决移动端 300 毫秒的延时问题
     - 页面跳转的时候会受上一个页面滚动的影响 可以在 routers 上加上 scrollBehavior 配置
     - 组件动画的使用
 
+- 调试
+
+  - vconsole 安装
+
+- wap2app 打包
+
+  - wap2app 教程[https://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/13425]
+  - 路由改造 主要在配置文件 `sitemap.json` 修改 如:
+    ```json
+    {
+      "pages": [
+        {
+          "webviewId": "__W2A__192.168.31.158", //首页
+          "matchUrls": [
+            {
+              "href": "http://192.168.31.158:8080"
+            },
+            {
+              "href": "http://192.168.31.158:8080/"
+            }
+          ],
+          "webviewParameter": {
+            "titleNView": false,
+            "statusbar": {
+              //状态条背景色，
+              //首页不使用原生导航条，颜色值建议和global->webviewParameter->titleNView->backgroundColor颜色值保持一致
+              //若首页启用了原生导航条，则建议将首页的statusbar配置为false，这样状态条可以和原生导航条背景色保持一致；
+              "background": "#f7f7f7"
+            }
+          }
+        },
+        {
+          "webviewId": "detail", //详情
+          "matchUrls": [
+            {
+              "href": "WILDCARD:/article/*"
+            }
+          ]
+        }
+      ]
+    }
+    ```
+  - 判断UA的不同 实现不同的路由跳转方式
+
 ## 问题
 
 1. VSCode 中格式化 vue 文件时，js 代码会被自动添加上分号，单引号转为双引号

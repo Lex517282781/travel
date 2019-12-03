@@ -2,23 +2,27 @@
   <div>
     <div class="title">热销推荐</div>
     <ul>
-      <router-link
-        tag="li"
+      <li
         class="item border-bottom"
         v-for="item of list"
         :key="item.id"
-        :to="'/detail/' + item.id"
       >
-        <img
-          class="item-img"
-          :src="item.imgUrl"
-        />
-        <div class="item-info">
-          <p class="item-title">{{item.title}}</p>
-          <p class="item-desc">{{item.desc}}</p>
-          <button class="item-button">查看详情</button>
-        </div>
-      </router-link>
+        <component
+          class="item-inner"
+          :is="currentComponent"
+          :[attr]="'/detail/' + item.id"
+        >
+          <img
+            class="item-img"
+            :src="item.imgUrl"
+          />
+          <div class="item-info">
+            <p class="item-title">{{item.title}}</p>
+            <p class="item-desc">{{item.desc}}</p>
+            <button class="item-button">查看详情</button>
+          </div>
+        </component>
+      </li>
     </ul>
   </div>
 </template>
@@ -30,7 +34,17 @@ export default {
     list: Array
   },
   data() {
-    return {}
+    return {
+      currentComponent: 'router-link',
+      attr: 'to'
+    }
+  },
+  created() {
+    const { isClient } = this.$store.state
+    if (isClient) {
+      this.currentComponent = 'a'
+      this.attr = 'href'
+    }
   }
 }
 </script>
@@ -42,7 +56,7 @@ export default {
   line-height 0.8rem
   background #eee
   text-indent 0.2rem
-.item
+.item-inner
   overflow hidden
   display flex
   height 1.9rem

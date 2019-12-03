@@ -6,6 +6,8 @@ import fastClick from 'fastclick'
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+import Vconsole from 'vconsole'
+
 import './registerServiceWorker'
 import './assets/css/reset.css'
 import './assets/css/border.css'
@@ -15,8 +17,10 @@ import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
+const vConsole = new Vconsole()
 
 Vue.use(VueAwesomeSwiper)
+Vue.use(vConsole)
 
 new Vue({
   router,

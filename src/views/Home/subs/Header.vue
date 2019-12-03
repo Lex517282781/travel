@@ -7,18 +7,34 @@
       <span class="iconfont">&#xe7b3;</span>
       输入城市/景点/游玩主题
     </div>
-    <router-link to='/city'>
+    <component
+      :is="currentComponent"
+      :[attr]="'/city'"
+    >
       <div class="header-right">
         {{this.$store.state.city}}
         <span class="iconfont arrow-icon">&#xe7b2;</span>
       </div>
-    </router-link>
+    </component>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  data() {
+    return {
+      currentComponent: 'router-link',
+      attr: 'to'
+    }
+  },
+  created() {
+    const { isClient } = this.$store.state
+    if (isClient) {
+      this.currentComponent = 'a'
+      this.attr = 'href'
+    }
+  }
 }
 </script>
 

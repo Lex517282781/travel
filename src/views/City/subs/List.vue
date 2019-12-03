@@ -37,7 +37,7 @@
             class="item border-bottom"
             v-for="innerItem of item"
             :key="innerItem.id"
-             @click="handeCityChange(innerItem.name)"
+            @click="handeCityChange(innerItem.name)"
           >
             {{innerItem.name}}
           </div>
@@ -60,7 +60,12 @@ export default {
   methods: {
     handeCityChange(city) {
       this.$store.commit('changeCity', city)
-      this.$router.push('/')
+      const { isClient } = this.$store.state
+      if (isClient) {
+        window.history.back()
+      } else {
+        this.$router.push('/')
+      }
     }
   },
   mounted() {

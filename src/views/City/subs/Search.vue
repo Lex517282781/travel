@@ -51,7 +51,12 @@ export default {
   methods: {
     handeCityChange(city) {
       this.$store.commit('changeCity', city)
-      this.$router.push('/')
+      const { isClient } = this.$store.state
+      if (isClient) {
+        window.history.back()
+      } else {
+        this.$router.push('/')
+      }
     }
   },
   computed: {
