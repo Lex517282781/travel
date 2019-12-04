@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { os } from '@/utils/tools'
 
 Vue.use(Vuex)
+
+const UserAgent = navigator.userAgent.toLowerCase()
 
 export default new Vuex.Store({
   state: {
     city: '上海',
-    isClient: os.isIphone || os.isAndroid
+    isClient: /dcloud/.test(UserAgent)
   },
   mutations: {
-    changeCity(ctx, city) {
+    changeCity (ctx, city) {
       ctx.city = city
     }
   },

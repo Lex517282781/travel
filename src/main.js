@@ -22,6 +22,8 @@ const vConsole = new Vconsole()
 Vue.use(VueAwesomeSwiper)
 Vue.use(vConsole)
 
+console.log(store.state)
+
 new Vue({
   router,
   store,
