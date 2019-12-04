@@ -3,12 +3,10 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const UserAgent = navigator.userAgent.toLowerCase()
-
 export default new Vuex.Store({
   state: {
     city: '上海',
-    isClient: /dcloud/.test(UserAgent)
+    isClient: /Html5Plus/.test(navigator.userAgent)
   },
   mutations: {
     changeCity (ctx, city) {

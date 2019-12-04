@@ -9,6 +9,7 @@
     <div class="content">
       <detail-list :list="list"></detail-list>
     </div>
+    <div style="height: 600px;">123</div>
   </div>
 </template>
 
