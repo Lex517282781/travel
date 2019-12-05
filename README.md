@@ -92,9 +92,15 @@ fastclick 解决移动端 300 毫秒的延时问题
           "webviewId": "detail", //详情
           "matchUrls": [
             {
-              "href": "WILDCARD:/article/*"
+              "pathname": "WILDCARD:/detail/*" // 通配符匹配
             }
-          ]
+          ],
+          "webviewParameter": {
+            "titleNView": {
+              "titleText": "景点详情",
+              "type": "transparent"
+            }
+          }
         }
       ]
     }
@@ -140,3 +146,15 @@ fastclick 解决移动端 300 毫秒的延时问题
   "singleQuote": true
 }
 ```
+
+## todo
+
+1. 微信登录
+
+2. 分享 朋友 朋友圈 保存图片
+
+3. 定位
+
+4. 支付 微信
+
+5. 百度地图用h5 或者 打开原生app
