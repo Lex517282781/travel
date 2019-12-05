@@ -4,12 +4,28 @@
     <button @click="handleWxShare">微信分享</button>
     <button @click="handleTimeShare">朋友圈分享</button>
     <button @click="handleMiniShare">小程序分享</button>
+    <button @click="handleWxAuth">微信授权</button>
+    <button @click="handleWxAuthLogout">退出登录</button>
+    <button @click="handleGeolocation">定位</button>
+    <div style="margin-bottom: 50px;">
+      <p>地址：{{address}}</p>
+      <p>经度：{{lon}}</p>
+      <p>纬度：{{lat}}</p>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'titlenviewbtns',
+  data: function() {
+    return {
+      auths: null,
+      address: '',
+      lon: '',
+      lat: ''
+    }
+  },
   methods: {
     handleShare() {
       const { isClient } = this.$store.state
@@ -111,6 +127,88 @@ export default {
           }
         )
       }
+    },
+    handleWxAuth() {
+      const { isClient } = this.$store.state
+      if (isClient) {
+        const _this = this
+        window.plus.oauth.getServices(
+          function(services) {
+            _this.auths = services[0]
+            _this.authLogin(services[0])
+          },
+          function(e) {
+            alert('获取分享服务列表失败：' + e.message + ' - ' + e.code)
+          }
+        )
+      }
+    },
+    authLogin(s) {
+      if (!s.authResult) {
+        const _this = this
+        s.login(
+          function(e) {
+            // 获取登录操作结果
+            var result = e.target.authResult
+            alert('登录认证成功：' + JSON.stringify(result))
+            _this.authUserInfo()
+          },
+          function(e) {
+            alert('登录认证失败！')
+          },
+          {}
+        )
+      }
+    },
+    authUserInfo(s) {
+      if (!s.authResult) {
+        alert('未登录授权！')
+      } else {
+        s.getUserInfo(
+          function(e) {
+            alert('获取用户信息成功：' + JSON.stringify(s.userInfo))
+
+            // 拿到用户信息，进行相关处理，ajax传用户数据到服务器等
+            var prame = JSON.stringify(s.userInfo)
+            console.log(prame)
+          },
+          function(e) {
+            alert('获取用户信息失败：' + e.message + ' - ' + e.code)
+          }
+        )
+      }
+    },
+    handleWxAuthLogout() {
+      if (!this.auths) return
+      for (var i in this.auths) {
+        var s = this.auths[i]
+        if (s.authResult) {
+          s.logout(
+            function(e) {
+              alert('注销登录认证成功！')
+            },
+            function(e) {
+              alert('注销登录认证失败1！')
+            }
+          )
+        }
+      }
+    },
+    handleGeolocation() {
+      const { isClient } = this.$store.state
+      const _this = this
+      if (isClient) {
+        navigator.geolocation.getCurrentPosition(
+          function(p) {
+            _this.address = p.addresses
+            _this.lon = p.coords.longitude
+            _this.lat = p.coords.latitude
+          },
+          function(err) {
+            console.log(err.message)
+          }
+        )
+      }
     }
   }
 }
@@ -118,10 +216,10 @@ export default {
 
 <style lang="stylus" scoped>
 div
-  text-align: center
+  text-align center
   button
-    display: block
-    margin: 50px auto
-    width: 50%
-    height: 60px
+    display block
+    margin 50px auto
+    width 50%
+    height 60px
 </style>
