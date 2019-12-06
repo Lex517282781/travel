@@ -12,6 +12,7 @@
       <p>经度：{{lon}}</p>
       <p>纬度：{{lat}}</p>
     </div>
+    <button @click="handlePay">支付</button>
   </div>
 </template>
 
@@ -111,8 +112,8 @@ export default {
               'http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eo5hd9ovRGbib6TYibI1TpRNEqWjW3VmZ5Kv0FCOwAXibXeqiauFF80Jcg53oYr3bUzwyYrYjZ7Ogu8ibQ/132'
             ], // 分享缩略图
             miniProgram: {
-              id: 'gh_33446d7f7a26', // gh_33446d7f7a26
-              path: '/pages/component/component', // /pages/component/component
+              id: 'gh_7c7d8fd93ca4', // gh_33446d7f7a26
+              path: '/pages/home/index', // /pages/component/component
               webUrl: 'http://uniapp.dcloud.io',
               type: 0
             }
@@ -209,6 +210,9 @@ export default {
           }
         )
       }
+    },
+    handlePay() {
+      console.log(1)
     }
   }
 }
@@ -216,10 +220,10 @@ export default {
 
 <style lang="stylus" scoped>
 div
-  text-align center
+  text-align: center
   button
-    display block
-    margin 50px auto
-    width 50%
-    height 60px
+    display: block
+    margin: 50px auto
+    width: 50%
+    height: 60px
 </style>

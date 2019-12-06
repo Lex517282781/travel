@@ -107,6 +107,12 @@ fastclick 解决移动端 300 毫秒的延时问题
     ```
   - 判断UA的不同 实现不同的路由跳转方式
 
+  - app自定义配置真机调试如何生效
+
+    配置参数需要提交云端打包后才能生效，如果需要真机运行生效请使用[自定义基座][https://ask.dcloud.net.cn/article/35115]
+
+  - vue-cli https 开启：在vue.config.js中设置devServer的https为true
+
 ## 问题
 
 1. VSCode 中格式化 vue 文件时，js 代码会被自动添加上分号，单引号转为双引号
