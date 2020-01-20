@@ -3,7 +3,7 @@ module.exports = {
     https: true,
     proxy: {
       '/api': {
-        target: 'https://192.168.31.158:8080',
+        target: 'https://192.168.2.228:8080',
         pathRewrite: {
           '^/api': '/mock'
         }

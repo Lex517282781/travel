@@ -17,6 +17,7 @@
 </template>
 
 <script>
+let channel = null
 export default {
   name: 'titlenviewbtns',
   data: function() {
@@ -212,8 +213,23 @@ export default {
       }
     },
     handlePay() {
-      console.log(1)
+      console.log(channel)
     }
+  },
+  mounted() {
+    function plusReady() {
+      // 获取支付通道
+      window.plus.payment.getChannels(
+        function(channels) {
+          channel = channels[0]
+          console.log(channels)
+        },
+        function(e) {
+          alert('获取支付通道失败：' + e.message)
+        }
+      )
+    }
+    window.document.addEventListener('plusready', plusReady, false)
   }
 }
 </script>
